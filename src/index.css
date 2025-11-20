@@ -1,0 +1,54 @@
+@import "tailwindcss";
+
+@import "@fontsource/outfit";
+@import "@fontsource/playfair-display";
+
+@theme {
+  --font-sans: "Outfit", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-serif: "Playfair Display", ui-serif, Georgia, Cambria, "Times New Roman",
+    Times, serif;
+
+  --color-chocolate: #3E2723;
+  --color-chocolate-light: #5D4037;
+  --color-strawberry: #FF4081;
+  --color-strawberry-light: #FF80AB;
+  --color-cream: #FFF8E1;
+  --color-gold: #FFD700;
+}
+
+:root {
+  --background: #FFF8E1;
+  --foreground: #3E2723;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+}
+
+/* Custom Utilities */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.text-gradient {
+  background: linear-gradient(to right, #3E2723, #FF4081);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Smooth Scroll */
+html {
+  scroll-behavior: smooth;
+}
