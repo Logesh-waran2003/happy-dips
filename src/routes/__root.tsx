@@ -36,10 +36,15 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
       },
       {
         name: 'description',
-        content: 'Experience the finest strawberry chocolates and desserts in Chennai at Happy Dips. Crafted with passion and premium ingredients.',
+        content:
+          'Experience the finest strawberry chocolates and desserts in Chennai at Happy Dips. Crafted with passion and premium ingredients.',
       },
     ],
     links: [
+      {
+        rel: 'icon',
+        href: '/logo.jpg',
+      },
       {
         rel: 'stylesheet',
         href: appCss,

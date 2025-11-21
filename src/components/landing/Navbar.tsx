@@ -1,38 +1,45 @@
-import { useState, useEffect } from 'react';
-import { Link } from '@tanstack/react-router';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, ShoppingBag } from 'lucide-react';
-import { twMerge } from 'tailwind-merge';
+import { useState, useEffect } from 'react'
+import { Link } from '@tanstack/react-router'
+import { motion, AnimatePresence } from 'framer-motion'
+import { Menu, X, ShoppingBag } from 'lucide-react'
+import { twMerge } from 'tailwind-merge'
 
 export function Navbar() {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false)
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+      setIsScrolled(window.scrollY > 50)
+    }
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   const navLinks = [
     { name: 'Home', href: '/' },
     { name: 'Menu', href: '#menu' },
     { name: 'About', href: '#about' },
     { name: 'Contact', href: '#contact' },
-  ];
+  ]
 
   return (
     <nav
       className={twMerge(
         'fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-6 py-4',
-        isScrolled ? 'glass-panel py-3' : 'bg-transparent'
+        isScrolled ? 'glass-panel py-3' : 'bg-transparent',
       )}
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between">
-        <Link to="/" className="text-2xl font-serif font-bold text-chocolate">
-          Happy Dips
+        <Link to="/" className="flex items-center gap-2">
+          <img
+            src="/logo.jpg"
+            alt="Happy Dips"
+            className="h-10 w-10 rounded-full object-cover"
+          />
+          <span className="text-2xl font-serif font-bold text-chocolate">
+            Happy Dips
+          </span>
         </Link>
 
         {/* Desktop Menu */}
@@ -46,10 +53,13 @@ export function Navbar() {
               {link.name}
             </a>
           ))}
-          <button className="bg-strawberry text-white px-6 py-2 rounded-full hover:bg-strawberry-light transition-colors flex items-center gap-2">
+          <a
+            href="#contact"
+            className="bg-strawberry text-white px-6 py-2 rounded-full hover:bg-strawberry-light transition-colors flex items-center gap-2"
+          >
             <ShoppingBag size={18} />
-            Order Now
-          </button>
+            Enquire Now
+          </a>
         </div>
 
         {/* Mobile Menu Button */}
@@ -81,14 +91,18 @@ export function Navbar() {
                   {link.name}
                 </a>
               ))}
-              <button className="bg-strawberry text-white px-8 py-3 rounded-full hover:bg-strawberry-light transition-colors flex items-center gap-2">
+              <a
+                href="#contact"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="bg-strawberry text-white px-8 py-3 rounded-full hover:bg-strawberry-light transition-colors flex items-center gap-2"
+              >
                 <ShoppingBag size={20} />
-                Order Now
-              </button>
+                Enquire Now
+              </a>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
     </nav>
-  );
+  )
 }
